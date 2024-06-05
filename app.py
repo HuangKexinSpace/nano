@@ -3,6 +3,7 @@ from openai import OpenAI  # Import OpenAI
 from config import OPENAI_API_KEY
 from config import ASSISTANT_ID
 import time
+import os
 
 app = Flask(__name__)
 
