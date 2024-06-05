@@ -8,8 +8,8 @@ import os
 app = Flask(__name__)
 
 # Initialize OpenAI client with your API key
-client = OpenAI(api_key=OPENAI_API_KEY)
-assistant = client.beta.assistants.retrieve(ASSISTANT_ID)
+client = OpenAI(api_key= "sk-proj-c2rLSFpnlPnl20iJCd4mT3BlbkFJDmHUkoZSa2GvLuD67rMS")
+assistant = client.beta.assistants.retrieve("asst_JRXuMN50S3EbVllQmhN9sNMA")
 thread = client.beta.threads.create()
 
 @app.route('/')
