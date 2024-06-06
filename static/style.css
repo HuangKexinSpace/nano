@@ -49,10 +49,13 @@ h1 {
 
 #chat-box {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: auto;  /* 允许垂直滚动 */
     padding: 10px;
     border-bottom: 4px solid #ffdede;
+    word-wrap: break-word;  /* 确保文本自动换行并在必要时断词 */
+    overflow-wrap: break-word;  /* 替代属性，功能同 word-wrap */
 }
+
 
 #input-area {
     padding: 10px;
@@ -60,10 +63,16 @@ h1 {
 }
 
 #user-input {
-    flex-grow: 1;
-    height: 60px;
+    width: 100%;  /* 确保输入框宽度固定 */
+    max-width: 100%;  /* 防止输入框超出其容器宽度 */
+    height: auto;  /* 允许高度自动调整以适应内容 */
+    min-height: 60px;  /* 最小高度，保持初始高度不变 */
     padding: 10px;
     font-size: 18px;
+    white-space: pre-wrap;  /* 允许文本自动换行 */
+    overflow-wrap: break-word;  /* 防止长单词或URL破坏布局 */
+    border: 1px solid #ccc;  /* 可选：添加边框以更好地视觉定位 */
+    box-sizing: border-box;  /* 确保内边距和边框不会增加输入框的宽度 */
 }
 
 button {
