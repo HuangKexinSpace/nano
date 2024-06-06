@@ -54,6 +54,7 @@ h1 {
     border-bottom: 4px solid #ffdede;
     word-wrap: break-word;  /* 确保文本自动换行并在必要时断词 */
     overflow-wrap: break-word;  /* 替代属性，功能同 word-wrap */
+     max-width: 100%;  /* 设定最大宽度为容器的100% */
 }
 
 
