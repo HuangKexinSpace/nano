@@ -4,8 +4,6 @@ from openai import OpenAI
 import os
 import time
 
-load_dotenv()  # Load environment variables from .env file
-
 app = Flask(__name__)
 
 # Load API key and assistant ID from environment variables
@@ -14,6 +12,8 @@ ASSISTANT_ID = os.getenv("ASSISTANT_ID")
 
 # Initialize OpenAI client with your API key
 client = OpenAI(api_key=OPENAI_API_KEY)
+assistant = client.beta.assistants.retrieve(ASSISTANT_ID)
+thread = client.beta.threads.create()
 
 @app.route('/')
 def home():
@@ -69,7 +69,6 @@ def send_message():
         return jsonify({'reply': None, 'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=os.getenv("PORT", 5000))
-
+    app.run(debug=True)
 
 # Gesture and its role in classroom communication: an issue for the personalised learning agenda
