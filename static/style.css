@@ -64,6 +64,8 @@ h2 {
     height: 60px;
     padding: 10px;
     font-size: 18px;
+    color: #a20303;
+    font-weight: bold;
 }
 
 button {
