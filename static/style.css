@@ -9,8 +9,8 @@ html, body {
 }
 
 h1 {
-    text-align: center;
-    margin-top: 20px;
+    margin-top: 24px;
+    color: #bc2416; /* 设置颜色为 #EB4233 */
 }
 
 #main-container {
@@ -21,7 +21,10 @@ h1 {
     box-shadow: 0 0 15px rgba(0,0,0,0.15); 
     border-radius: 10px; 
     overflow: hidden;
+    border: 5px solid rgb(204, 98, 98); /* 修改边框颜色并稍微增加边框宽度 */
+    border-radius: 20px; /* 增加边框圆角 */
 }
+
 
 #image-container {
     flex: 1;
@@ -29,7 +32,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #ccc;
+    background: #f5d0d0;
 }
 
 #image-container img {
@@ -48,12 +51,12 @@ h1 {
     flex-grow: 1;
     overflow-y: auto;
     padding: 10px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 4px solid #ffdede;
 }
 
 #input-area {
     padding: 10px;
-    border-top: 2px solid #ccc;
+    border-top: 2px solid #ffdede;
 }
 
 #user-input {
@@ -66,7 +69,7 @@ h1 {
 button {
     width: 120px;
     padding: 12px 0;
-    background-color: #0056b3;
+    background-color: #ac0202;
     color: white;
     border: none;
     cursor: pointer;
@@ -74,4 +77,15 @@ button {
 
 .hidden {
     display: none;
+}
+.user-message .message-content {
+    color: black; /* 用户消息的字体颜色为黑色 */
+    font-weight: 525; /* 设定为粗体 */
+    font-size: 20px;
+}
+
+.gpt-message .message-content {
+    color: #ac1709; /* NANO响应消息的字体颜色 */
+    font-weight: 530; /* 设定为粗体 */
+    font-size: 20px;
 }
