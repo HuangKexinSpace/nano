@@ -6,11 +6,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-h1 {
-    margin-top: 24px;
-    color: #bc2416; /* 设置颜色为 #EB4233 */
+    overflow: hidden; /* 防止整个页面出现滚动条 */
 }
 
 #main-container {
@@ -19,12 +15,10 @@ h1 {
     height: 85%; 
     display: flex;
     box-shadow: 0 0 15px rgba(0,0,0,0.15); 
-    border-radius: 10px; 
-    overflow: hidden;
-    border: 5px solid rgb(204, 98, 98); /* 修改边框颜色并稍微增加边框宽度 */
-    border-radius: 20px; /* 增加边框圆角 */
+    border-radius: 20px;
+    border: 5px solid rgb(204, 98, 98);
+    overflow: hidden; /* 防止内容溢出 */
 }
-
 
 #image-container {
     flex: 1;
@@ -33,15 +27,11 @@ h1 {
     align-items: center;
     justify-content: center;
     background: #f5d0d0;
-}
-
-#image-container img {
-    width: 100%;
-    height: auto; /* Adjust this if you need to control the image height */
+    min-width: 300px; /* 确保图片容器至少有300px宽 */
 }
 
 #chat-container {
-    flex: 2;
+    flex: 3;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -49,53 +39,51 @@ h1 {
 
 #chat-box {
     flex-grow: 1;
-    overflow-y: auto;  /* 允许垂直滚动 */
+    overflow-y: auto;
     padding: 10px;
     border-bottom: 4px solid #ffdede;
-    word-wrap: break-word;  /* 确保文本自动换行并在必要时断词 */
-    overflow-wrap: break-word;  /* 替代属性，功能同 word-wrap */
-     max-width: 100%;  /* 设定最大宽度为容器的100% */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
-
 
 #input-area {
-    padding: 10px;
-    border-top: 2px solid #ffdede;
+    padding: 12px;
+    border-top: 4px solid #ffdede;
 }
 
-#user-input {
-    width: 100%;  /* 确保输入框宽度固定 */
-    max-width: 100%;  /* 防止输入框超出其容器宽度 */
-    height: auto;  /* 允许高度自动调整以适应内容 */
-    min-height: 60px;  /* 最小高度，保持初始高度不变 */
-    padding: 10px;
-    font-size: 18px;
-    white-space: pre-wrap;  /* 允许文本自动换行 */
-    overflow-wrap: break-word;  /* 防止长单词或URL破坏布局 */
-    border: 1px solid #ccc;  /* 可选：添加边框以更好地视觉定位 */
-    box-sizing: border-box;  /* 确保内边距和边框不会增加输入框的宽度 */
+#user-input
+{
+    width: 100%;
+    overflow-wrap: break-word;
+    height: 40px;  /* 设置输入框的固定高度 */
+    border: 2px solid #000000;
+}
+
+
+.message-content {
+    width: 100%;
+    overflow-wrap: break-word;
 }
 
 button {
-    width: 120px;
-    padding: 12px 0;
+    width: 160px;
+    padding: 18px 12px;
     background-color: #ac0202;
     color: white;
     border: none;
     cursor: pointer;
 }
 
-.hidden {
-    display: none;
-}
-.user-message .message-content {
-    color: black; /* 用户消息的字体颜色为黑色 */
-    font-weight: 525; /* 设定为粗体 */
+.user-message .message-content
+{
+    font-weight: 525;
     font-size: 20px;
+    color: rgb(0, 0, 0);
 }
 
 .gpt-message .message-content {
-    color: #ac1709; /* NANO响应消息的字体颜色 */
-    font-weight: 530; /* 设定为粗体 */
+    font-weight: 535;
     font-size: 20px;
+    color: #ac0202;
 }
