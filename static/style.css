@@ -1,23 +1,21 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* 防止整个页面出现滚动条 */
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif; /* Add your font styling here */
 }
 
 #main-container {
-    width: 95%; 
-    max-width: 1400px; 
-    height: 85%; 
+    width: 40%;
+    max-width: 1400px;
+    height: 85%;
     display: flex;
-    box-shadow: 0 0 15px rgba(0,0,0,0.15); 
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
     border-radius: 20px;
     border: 5px solid rgb(204, 98, 98);
     overflow: hidden; /* 防止内容溢出 */
+    margin: auto;
 }
 
 #image-container {
@@ -26,12 +24,12 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f5d0d0;
-    min-width: 300px; /* 确保图片容器至少有300px宽 */
+    background: #ebadad;
+    min-width: 260px; /* 确保图片容器至少有300px宽 */
 }
 
 #chat-container {
-    flex: 3;
+    flex: 2;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -39,51 +37,140 @@ html, body {
 
 #chat-box {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Newest messages at the bottom */
     overflow-y: auto;
+    border: 1px solid #a80f0f;
     padding: 10px;
-    border-bottom: 4px solid #ffdede;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
+    margin-bottom: 10px;
+    background-color: #fae9e9;
+
 }
 
 #input-area {
-    padding: 12px;
+    flex-shrink: 0; /* Ensure the input area does not grow and stays at the bottom */
+    display: flex;
+    padding: 10px;
     border-top: 4px solid #ffdede;
 }
 
-#user-input
-{
-    width: 100%;
-    overflow-wrap: break-word;
-    height: 40px;  /* 设置输入框的固定高度 */
+#user-input {
+    width: 80%;
+    padding: 10px;
     border: 2px solid #000000;
-}
-
-
-.message-content {
-    width: 100%;
-    overflow-wrap: break-word;
+    border-radius: 5px;
 }
 
 button {
-    width: 160px;
-    padding: 18px 12px;
-    background-color: #ac0202;
+    width: 18%;
+    padding: 10px;
+    background-color: rgb(250, 66, 66);
     color: white;
     border: none;
+    border-radius: 5px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
-.user-message .message-content
-{
-    font-weight: 525;
-    font-size: 20px;
-    color: rgb(0, 0, 0);
+.message {
+    max-width: 80%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative; /* Add position relative here for :after positioning */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-.gpt-message .message-content {
-    font-weight: 535;
-    font-size: 20px;
-    color: #ac0202;
+.user-message {
+    background-color: #f9c6d3;
+    align-self: flex-start; /* Align user messages to the left */
+}
+
+.user-message:after {
+    content: '';
+    position: absolute;
+    left: -10px; /* Adjust as needed */
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #f9c6d3; /* The color of the tail should match the bubble */
+    border-left: 0;
+    margin-top: -10px;
+    margin-left: 0;
+}
+
+.gpt-message {
+    background-color: #ffffff;
+    align-self: flex-end; /* Keep GPT messages aligned to the right */
+}
+
+.gpt-message:after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Adjust as needed */
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left-color: #ffffff; /* The color of the tail should match the bubble */
+    border-right: 0;
+    margin-top: -10px;
+    margin-right: 0;
+}
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/* Code block styles within a message */
+.message pre code {
+    display: block;
+    white-space: pre-wrap; /* Wrap text */
+    overflow-wrap: break-word;
+    background-color: #ffffff; /* Light grey background */
+    border: 1px solid #ffffff; /* Add border to distinguish the code block */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Ensure all pre elements are within a single bounding box */
+.message pre {
+    background-color: #f5f5f5;
+    padding: 5px;
+    border-radius: 5px;
+    color: #a80f0f;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    #main-container {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: none;
+    }
+
+    #image-container {
+        min-width: 100%;
+        height: 200px; /* Adjust height as needed for small screens */
+    }
+
+    #chat-container {
+        flex: none;
+        height: calc(100vh - 200px - 40px); /* Adjust height to fill remaining space */
+    }
+
+    #chat-box {
+        height: calc(100vh - 200px - 40px - 52px); /* Adjust height for input area */
+    }
 }
