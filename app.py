@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
+from dotenv import load_dotenv
 from openai import OpenAI
 import os
+import time
 
 app = Flask(__name__)
 
